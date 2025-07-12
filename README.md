@@ -1,5 +1,4 @@
 
-<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
@@ -66,7 +65,32 @@
             text-decoration: none;
             line-height: 60px;
         }
+        select, input[type="text"] {
+            padding: 0.5rem;
+            width: 100%;
+            margin: 0.5rem 0 1rem 0;
+            font-size: 1rem;
+        }
+        button {
+            padding: 1rem;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
     </style>
+    <script>
+        function simularNoWhatsApp() {
+            const tipo = document.getElementById("tipo").value;
+            const valor = document.getElementById("valor").value;
+            const parcela = document.getElementById("parcela").value;
+            const nome = document.getElementById("nome").value;
+            const msg = `Olá! Me chamo ${nome}. Quero simular um consórcio para ${tipo} no valor de R$ ${valor}, com parcelas de R$ ${parcela}.`;
+            const url = `https://wa.me/5598985315556?text=${encodeURIComponent(msg)}`;
+            window.open(url, '_blank');
+        }
+    </script>
 </head>
 <body>
 
@@ -97,12 +121,44 @@
 
 <section id="simulador">
     <h2>Simule Agora</h2>
-    <p>Deseja fazer uma simulação? Clique no botão abaixo e fale conosco pelo WhatsApp.</p>
-    <a href="https://wa.me/5598985315556" target="_blank">
-        <button style="padding: 1rem; background-color: #0066cc; color: white; border: none; border-radius: 5px;">
-            Simular pelo WhatsApp
-        </button>
-    </a>
+    <p>Preencha os dados abaixo e clique em "Simular pelo WhatsApp".</p>
+    <input type="text" id="nome" placeholder="Seu nome completo" required>
+    <select id="tipo">
+        <option value="" disabled selected>Selecione o tipo de consórcio</option>
+        <option value="Imóveis">Imóveis</option>
+        <option value="Veículos">Veículos</option>
+        <option value="Consórcio Rural">Consórcio Rural</option>
+        <option value="Abertura de Negócio">Abertura de Negócio</option>
+        <option value="Reforma">Reforma</option>
+        <option value="Trator">Trator</option>
+        <option value="Caminhão">Caminhão</option>
+    </select>
+    <select id="valor">
+        <option value="" disabled selected>Selecione o valor desejado</option>
+        <option value="100.000">100 mil</option>
+        <option value="200.000">200 mil</option>
+        <option value="300.000">300 mil</option>
+        <option value="400.000">400 mil</option>
+        <option value="500.000">500 mil</option>
+        <option value="900.000">900 mil</option>
+        <option value="1.000.000">1 milhão</option>
+        <option value="2.000.000">2 milhões</option>
+    </select>
+    <select id="parcela">
+        <option value="" disabled selected>Selecione o valor da parcela</option>
+        <option value="890">R$ 890</option>
+        <option value="1.200">R$ 1.200</option>
+        <option value="2.500">R$ 2.500</option>
+        <option value="3.600">R$ 3.600</option>
+        <option value="4.580">R$ 4.580</option>
+        <option value="5.500">R$ 5.500</option>
+        <option value="6.200">R$ 6.200</option>
+        <option value="7.000">R$ 7.000</option>
+        <option value="9.000">R$ 9.000</option>
+        <option value="12.000">R$ 12.000</option>
+        <option value="23.000">R$ 23.000</option>
+    </select>
+    <button onclick="simularNoWhatsApp()">Simular pelo WhatsApp</button>
 </section>
 
 <section id="sobre">
